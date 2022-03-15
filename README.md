@@ -1,78 +1,90 @@
-# node-typescript-boilerplate
+# AOP Decorators
 
-[![TypeScript version][ts-badge]][typescript-4-3]
-[![Node.js version][nodejs-badge]][nodejs]
+The module contain decorators that help us to apply Aspect Oriented Programming (AOP) into NodeJs project. It uses [Winston](https://www.npmjs.com/package/winston) as based logger
 
-👩🏻‍💻 Developer Ready: A comprehensive template for Typescript Express.Js projects.
+## Table of Contents
 
-🏃🏽 Instant Value: All basic tools included and configured:
+- [Installation](#installation)
+- [Usage](#usage)
+- [Log className and methodName when logging message](#logContext)
+- [Log input param value](#logInputParam)
+- [Validate required parameters](#validateRequiredParams)
 
-- [TypeScript][typescript] [4.3][typescript-4-3]
-- [ESLint][eslint] with some initial rules recommendation
-- [Jest][jest] for fast unit testing and code coverage
-- Type definitions for Node.js and Jest
-- [Prettier][prettier] to enforce consistent code style
-- NPM [scripts](#available-scripts) for common operations
-- Simple example of TypeScript code and unit test
-- .editorconfig for consistent file format
+<a name="installation"></a>
 
-## Getting Started
+## Installation
 
-This project is intended to be used with the latest Active LTS release of [Node.js][nodejs].
+```bash
+npm install aop-decorators
 
-### Using NPM
+or
 
-This package is used to generate Typescript project, so I recommend to install it **globally**. Then run command to create new project whenever we want
-
-```
-npm install -g typescript-maker
-
-# Generate new project
-
-typescript-maker init my-project
+yarn add aop-decorators
 ```
 
-### Available options
-```
-- ioc : setup IOC container using [inversify](https://www.npmjs.com/package/inversify) (default: normal express)
-- p --pipeline <pipeline tool>: setup pipeline template (default: CircleCI)
-```
+<a name="usage"></a>
 
-### Create pipeline template
-```
-# currently it just supports 'circleci' or 'github'
+## Usage
 
-typescript-maker create-pipeline circleci
-```
+```Typescript
+@logContext()
+class SampleClass {
+  public logger: CustomLogger = new Logger();
 
-### Use as a repository template
-
-To start, just click the **[Use template][repo-template-action]** link (or the green button). Then, select which pipeline you gonna use by moving that one out of `pipeline` folder and removing `pipeline` folder. Start adding your code in the `src` and unit tests in the `__tests__` directories.
-
-### Clone repository
-
-To clone the repository, use the following commands:
-
-```sh
-git clone https://github.com/Maithanhdanh/express-typescript-biolerplate.git
-cd express-typescript-biolerplate
-npm install
+  @validate
+  @logInputParams()
+  public sampleMethod(@required() _params: any): any {
+    this.logger.info('dummy message');
+  }
+}
 ```
 
-## Note
+<a name="logContext"></a>
 
-- A new decorator `logGroup` is add to version `1.2.3`.
-- It will add called method to logger prefix by **modifying the definition of the class and method**
+## Log className and methodName when logging message
 
-## Changelog
-[ChangeLog](https://github.com/Maithanhdanh/express-typescript-boilerplate/blob/main/CHANGELOG.md)
+```Typescript
+@logContext()
+class SampleClass {
+  public logger: CustomLogger = new Logger();
 
-[ts-badge]: https://img.shields.io/badge/TypeScript-4.3-blue.svg
-[nodejs-badge]: https://img.shields.io/badge/Node.js->=%2014.16-blue.svg
-[nodejs]: https://nodejs.org/dist/latest-v14.x/docs/api/
-[typescript]: https://www.typescriptlang.org/
-[typescript-4-3]: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-3.html
-[jest]: https://facebook.github.io/jest/
-[eslint]: https://github.com/eslint/eslint
-[prettier]: https://prettier.io
-[repo-template-action]: https://github.com/Maithanhdanh/express-typescript-biolerplate.git
+  public sampleMethod(_params: any): any {
+    this.logger.info('dummy message');
+  }
+}
+```
+
+The message will be `[SampleClass] [sampleMethod] dummy message`
+
+<a name="logInputParam"></a>
+
+## Log input param value
+
+```Typescript
+class SampleClass {
+  public logger: CustomLogger = new Logger();
+
+  @logInputParams()
+  public sampleMethod(_params: any): any {
+    this.logger.info('dummy message');
+  }
+}
+```
+
+When the method is called, an additional log record will appear `method is called with param` with the input param value
+
+<a name="validateRequiredParams"></a>
+
+## Validate required parameters
+
+```Typescript
+class SampleClass {
+  public logger: CustomLogger = new Logger();
+
+  @validate
+  public sampleMethod(@required() _params: any): any {}
+}
+```
+
+Although `_params` is a required parameters, it still accept `undefined` value.
+It will throw `error` when `@required(error)`
