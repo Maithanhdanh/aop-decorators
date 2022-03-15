@@ -15,11 +15,11 @@ The module contain decorators that help us to apply Aspect Oriented Programming 
 ## Installation
 
 ```bash
-npm install aop-decorators
+npm install aop-js-decorators
 
 or
 
-yarn add aop-decorators
+yarn add aop-js-decorators
 ```
 
 <a name="usage"></a>
