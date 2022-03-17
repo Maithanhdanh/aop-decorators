@@ -1,5 +1,2 @@
-import 'reflect-metadata';
-
-export * as logger from '@logger/logger';
-export * as loggerConfig from '@logger/logger';
-export * as loggerValidator from '@decorators/logger/logger';
+export { Logger, loggerWrapper } from './logger/logger';
+export * from './decorators';

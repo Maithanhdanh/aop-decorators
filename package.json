@@ -2,12 +2,13 @@
   "name": "aop-js-decorators",
   "version": "1.0.0",
   "description": "Using decorator to apply AOP (Aspect Oriented Programming)",
+  "main": "src/index.js",
   "engines": {
     "node": ">=14 <15"
   },
   "scripts": {
     "clean": "rm -rf coverage build tmp",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "rm -rf build && tsc -p tsconfig.build.json",
     "build:watch": "tsc -w -p tsconfig.build.json",
     "lint": "eslint . --ext .ts --quiet --fix ",
     "test": "jest"
