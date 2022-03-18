@@ -1,6 +1,6 @@
 {
   "name": "decorators-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Using decorator to apply AOP (Aspect Oriented Programming)",
   "main": "src/index.js",
   "engines": {
