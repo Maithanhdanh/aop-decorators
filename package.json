@@ -16,7 +16,6 @@
   "author": "Dantis Mai <mtd.maithanhdanh@gmail.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "decorators-utils": "^1.0.1",
     "inversify": "^6.0.1",
     "module-alias": "^2.2.2",
     "tslib": "~2.3.0",

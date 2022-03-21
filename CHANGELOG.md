@@ -1,3 +1,7 @@
+# [1.0.4]
+
+- Fix ts complier
+
 # [1.0.3]
 
 - Fix ts complier
