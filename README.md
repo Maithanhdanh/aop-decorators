@@ -9,6 +9,7 @@ The module contain decorators that help us to apply Aspect Oriented Programming 
 - [Log className and methodName when logging message](#logContext)
 - [Log input param value](#logInputParam)
 - [Validate required parameters](#validateRequiredParams)
+- [CHANGELOG](#changeLog)
 
 <a name="installation"></a>
 
@@ -88,3 +89,8 @@ class SampleClass {
 
 Although `_params` is a required parameters, it still accept `undefined` value.
 It will throw `error` when `@required(error)`
+
+<a name="changeLog"></a>
+
+## CHANGELOG
+[CHANGELOG](https://github.com/Maithanhdanh/aop-decorators/blob/master/CHANGELOG.md)
