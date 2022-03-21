@@ -2156,6 +2156,16 @@ decimal.js@^10.2.1:
   resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-10.3.1.tgz#d8c3a444a9c6774ba60ca6ad7261c3a94fd5e783"
   integrity sha512-V0pfhfr8suzyPGOx3nmq4aHqabehUZn6Ch9kyFpV79TGDTWFmHqUqXdabR7QHqxzrYolF4+tVmJhUG4OURg5dQ==
 
+decorators-utils@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/decorators-utils/-/decorators-utils-1.0.1.tgz#842c3449e9ca3fd6407ff814cfcd4fb79a9606a8"
+  integrity sha512-TTH1kBg+VvlVzLR68EjhW/zJoaw5Wo/qRVR3B1xg++MxQRU++9bSVLC2nK6CC6hVt5vjiACXA7VNhe775MSnHQ==
+  dependencies:
+    inversify "^6.0.1"
+    module-alias "^2.2.2"
+    tslib "~2.3.0"
+    winston "^3.6.0"
+
 dedent@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.7.0.tgz#2495ddbaf6eb874abb0e1be9df22d2e5a544326c"
