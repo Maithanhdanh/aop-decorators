@@ -30,7 +30,7 @@ yarn add decorators-utils
 ```Typescript
 @logContext()
 class SampleClass {
-  public logger: ILogger = new Logger();
+  public logger: ILogger = new LoggerImpl();
 
   @validate
   @logInputParams()
@@ -47,7 +47,7 @@ class SampleClass {
 ```Typescript
 @logContext()
 class SampleClass {
-  public logger: ILogger = new Logger();
+  public logger: ILogger = new LoggerImpl();
 
   public sampleMethod(_params: any): any {
     this.logger.info('dummy message');
@@ -63,7 +63,7 @@ The message will be `[SampleClass] [sampleMethod] dummy message`
 
 ```Typescript
 class SampleClass {
-  public logger: ILogger = new Logger();
+  public logger: ILogger = new LoggerImpl();
 
   @logInputParams()
   public sampleMethod(_params: any): any {
@@ -80,7 +80,7 @@ When the method is called, an additional log record will appear `method is calle
 
 ```Typescript
 class SampleClass {
-  public logger: ILogger = new Logger();
+  public logger: ILogger = new LoggerImpl();
 
   @validate
   public sampleMethod(@required() _params: any): any {}
