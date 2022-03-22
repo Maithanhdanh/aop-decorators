@@ -19,11 +19,11 @@ const reflectMetadataKey = {
   METHOD_NAME: Symbol('methodName'),
 };
 
-interface CustomLogger {
+interface ILogger {
   debug(message: string): Logger;
   info(message: string): Logger;
   error(message: string): Logger;
   setContext(className: string, methodName?: string): void;
 }
 
-export { ServiceInfo, LoggerConfig, reflectMetadataKey, CustomLogger };
+export { ServiceInfo, LoggerConfig, reflectMetadataKey, ILogger };

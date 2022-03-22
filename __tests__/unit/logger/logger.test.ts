@@ -1,7 +1,7 @@
-import { Logger } from '@logger/logger';
+import { LoggerImpl } from '@logger/logger';
 
 describe('Logger', () => {
-  const logger = new Logger();
+  const logger = new LoggerImpl();
 
   it('should update className and methodName when call setContext', () => {
     logger.setContext('className', 'methodName');

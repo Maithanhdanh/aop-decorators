@@ -30,7 +30,7 @@ yarn add decorators-utils
 ```Typescript
 @logContext()
 class SampleClass {
-  public logger: CustomLogger = new Logger();
+  public logger: ILogger = new Logger();
 
   @validate
   @logInputParams()
@@ -47,7 +47,7 @@ class SampleClass {
 ```Typescript
 @logContext()
 class SampleClass {
-  public logger: CustomLogger = new Logger();
+  public logger: ILogger = new Logger();
 
   public sampleMethod(_params: any): any {
     this.logger.info('dummy message');
@@ -63,7 +63,7 @@ The message will be `[SampleClass] [sampleMethod] dummy message`
 
 ```Typescript
 class SampleClass {
-  public logger: CustomLogger = new Logger();
+  public logger: ILogger = new Logger();
 
   @logInputParams()
   public sampleMethod(_params: any): any {
@@ -80,7 +80,7 @@ When the method is called, an additional log record will appear `method is calle
 
 ```Typescript
 class SampleClass {
-  public logger: CustomLogger = new Logger();
+  public logger: ILogger = new Logger();
 
   @validate
   public sampleMethod(@required() _params: any): any {}
@@ -93,4 +93,5 @@ It will throw `error` when `@required(error)`
 <a name="changeLog"></a>
 
 ## CHANGELOG
+
 [CHANGELOG](https://github.com/Maithanhdanh/aop-decorators/blob/master/CHANGELOG.md)

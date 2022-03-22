@@ -1,2 +1,2 @@
-export { Logger, loggerWrapper } from './logger/logger';
+export * from './logger';
 export * from './decorators';

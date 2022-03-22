@@ -1,8 +1,8 @@
-import { CustomLogger } from '@logger/type';
-import { Logger } from '@logger/logger';
+import { LoggerImpl } from '@logger/logger';
+import { ILogger } from '@logger/type';
 
 class SampleClass {
-  public logger: CustomLogger = new Logger();
+  public logger: ILogger = new LoggerImpl();
 
   public sampleMethod(_params: any): any {
     this.logger.info('bla bla');

@@ -1,3 +1,8 @@
+# [1.0.7]
+
+- Export logger type `ILogger`
+- Fix decorators `logInputParams`
+
 # [1.0.6]
 
 - Fix package
@@ -15,7 +20,7 @@
 - Fix ts complier
 - Add `CHANGELOG`
 
-# [1.0.1]
+# [1.0.1] (deprecated)
 
 - Fix source code when export
 

@@ -1,5 +1,5 @@
 import { loggerConfig } from '@logger/logger.config';
-import { CustomLogger, LoggerConfig } from '@logger/type';
+import { ILogger, LoggerConfig } from '@logger/type';
 import { injectable } from 'inversify';
 import winston, { Logger } from 'winston';
 
@@ -29,7 +29,7 @@ const loggerWrapper = (config: LoggerConfig): Logger =>
   });
 
 @injectable()
-class CustomLoggerImpl implements CustomLogger {
+class LoggerImpl implements ILogger {
   private className: string;
   private methodName: string;
   public logger: Logger;
@@ -68,4 +68,4 @@ class CustomLoggerImpl implements CustomLogger {
   }
 }
 
-export { CustomLoggerImpl as Logger, loggerWrapper };
+export { LoggerImpl, loggerWrapper };

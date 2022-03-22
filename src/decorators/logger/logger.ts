@@ -15,14 +15,13 @@ function logContext() {
 }
 
 function logInputParams() {
-  return (target: any, propertyKey: string, descriptor: PropertyDescriptor): void => {
+  return (_target: any, _propertyKey: string, descriptor: PropertyDescriptor): void => {
     const originalMethod = descriptor.value;
 
     descriptor.value = function (...args: any[]) {
       (this as any).logger.debug('method is called with params', args);
       return originalMethod.apply(this, args);
     };
-    Object.defineProperty(target.prototype, propertyKey, descriptor);
   };
 }
 
