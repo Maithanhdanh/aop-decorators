@@ -1,7 +1,7 @@
-import winston, { Logger } from 'winston';
-import { CustomLogger, LoggerConfig } from '@logger/type';
 import { loggerConfig } from '@logger/logger.config';
+import { CustomLogger, LoggerConfig } from '@logger/type';
 import { injectable } from 'inversify';
+import winston, { Logger } from 'winston';
 
 const { createLogger, transports, format } = winston;
 const { timestamp, json, errors, combine } = format;
