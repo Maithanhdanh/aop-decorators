@@ -1,4 +1,4 @@
-import { LoggerConfig } from '@logger/type';
+import { LoggerConfig } from './type';
 
 const loggerConfig: LoggerConfig = {
   logLevel: 'debug',

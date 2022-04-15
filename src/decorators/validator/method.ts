@@ -1,4 +1,4 @@
-import { requiredMetadataKey } from '@decorators/validator/type';
+import { requiredMetadataKey } from './type';
 import 'reflect-metadata';
 
 function validate(target: any, propertyName: string, descriptor: PropertyDescriptor) {

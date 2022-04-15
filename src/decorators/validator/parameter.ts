@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { requiredMetadataKey } from '@decorators/validator/type';
+import { requiredMetadataKey } from './type';
 
 function required<T extends Error>(error?: T) {
   return function (target: any, propertyKey: string | symbol, parameterIndex: number): void {
