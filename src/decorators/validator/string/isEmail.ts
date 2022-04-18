@@ -1,5 +1,7 @@
 import BaseValidator from '../baseValidator';
 import { NameValidator } from '../error/validationError';
+import { validate } from '../method';
+import { required } from '../parameter';
 import { messageMapper } from '../type';
 import { addNeededValidateParams, addValidatorForParams } from '../utils/metadata';
 
@@ -8,9 +10,8 @@ class EmailValidator extends BaseValidator {
   protected errorMessage: string = messageMapper[NameValidator.IS_EMAIL];
   private pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-  public validateData(value: string): boolean {
-    if (!value) return true;
-
+  @validate
+  public validateData(@required(true) value: string): boolean {
     return this.pattern.test(value);
   }
 }

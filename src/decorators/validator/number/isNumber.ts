@@ -1,5 +1,7 @@
 import BaseValidator from '../baseValidator';
 import { NameValidator } from '../error/validationError';
+import { validate } from '../method';
+import { required } from '../parameter';
 import { messageMapper, Validator } from '../type';
 import { addNeededValidateParams, addValidatorForParams } from '../utils/metadata';
 
@@ -7,9 +9,8 @@ class NumberValidator extends BaseValidator implements Validator {
   protected name: NameValidator = NameValidator.IS_NUMBER;
   protected errorMessage: string = messageMapper[NameValidator.IS_NUMBER];
 
-  public validateData(value: string): boolean {
-    if (!value) return true;
-
+  @validate
+  public validateData(@required(true) value: string): boolean {
     return typeof value === 'number';
   }
 }

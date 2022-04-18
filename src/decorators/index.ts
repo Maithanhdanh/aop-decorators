@@ -4,3 +4,4 @@ export * from './validator/parameter';
 export * from './validator/string';
 export * from './validator/number';
 export * from './validator/common';
+export * from './validator/object';

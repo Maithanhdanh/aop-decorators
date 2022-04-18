@@ -1,16 +1,17 @@
 import BaseValidator from '../baseValidator';
 import { NameValidator } from '../error/validationError';
+import { required } from '../parameter';
 import { messageMapper, Validator } from '../type';
 import { addNeededValidateParams, addValidatorForParams } from '../utils/metadata';
+import { validate } from '@decorators/validator/method';
 
 class MaxStringSizeValidator extends BaseValidator implements Validator {
   protected name: NameValidator = NameValidator.MAX_SIZE;
   protected errorMessage: string = messageMapper[NameValidator.MAX_SIZE];
   private maxSize: number;
 
-  public validateData(value: string): boolean {
-    if (!value) return true;
-    
+  @validate
+  public validateData(@required(true) value: string): boolean {
     return value.length <= this.maxSize;
   }
 
