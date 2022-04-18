@@ -5,7 +5,7 @@ abstract class BaseValidator implements Validator {
   protected errorMessage: string;
   protected errorHandler;
 
-  abstract validateData(value: unknown): boolean;
+  abstract validateData(value: string | unknown, pattern?: RegExp): boolean;
 
   private validationErrorBuilder(path: string, message?: string): ValidationError {
     return {
@@ -19,11 +19,7 @@ abstract class BaseValidator implements Validator {
     return this.name;
   }
 
-  public setErrorHandler<T extends Error>(errorHandler?: T | string): void {
-    this.errorHandler = errorHandler;
-  }
-
-  public executeErrorHandler(path:string): never {
+  private executeErrorHandler(path: string): never {
     if (!this.errorHandler) {
       throw this.validationErrorBuilder(path);
     }
@@ -35,19 +31,15 @@ abstract class BaseValidator implements Validator {
     throw this.errorHandler;
   }
 
-  // {
-  //   if (!value) return true;
+  public setErrorHandler<T extends Error>(errorHandler?: T | string): void {
+    this.errorHandler = errorHandler;
+  }
 
-  //   return value instanceof String || typeof value === 'string';
-  // }
-
-  // public build(name: NameValidator): Validator {
-  //   return {
-  //     name,
-  //     errorHandler: this.errorHandlerBuilder,
-  //     validator: this.validateData,
-  //   };
-  // }
+  public validate(value: unknown, path: string): void {
+    if (!this.validateData(value)) {
+      throw this.executeErrorHandler(path);
+    }
+  }
 }
 
 export default BaseValidator;
