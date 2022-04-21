@@ -3,7 +3,7 @@ import { IsLess, validateSchema } from '@server/decorators';
 describe('IsLess', () => {
   class SampleClass {
     @IsLess(3)
-    private sampleProperty: string;
+    private sampleProperty: number;
 
     public getData(): void {
       console.log(this.sampleProperty);

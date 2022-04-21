@@ -1,29 +1,29 @@
-import { IsNumber, validateSchema } from '@server/decorators';
+import { IsBoolean, validateSchema } from '@server/decorators';
 
-describe('IsLess', () => {
+describe('IsBoolean', () => {
   class SampleClass {
-    @IsNumber()
-    private sampleProperty: number;
+    @IsBoolean()
+    private sampleProperty: Boolean;
 
     public getData(): void {
       console.log(this.sampleProperty);
     }
   }
   it(`should not throw error when data is string`, () => {
-    validateSchema(SampleClass, { sampleProperty: 2 });
+    validateSchema(SampleClass, { sampleProperty: true });
   });
 
   it(`should not throw error when data is not defined`, () => {
-    validateSchema(SampleClass, { property: 'sample' });
+    validateSchema(SampleClass, { property: 'true' });
   });
 
   it(`should throw error when data is not string`, () => {
     try {
-      validateSchema(SampleClass, { sampleProperty: 'string' });
+      validateSchema(SampleClass, { sampleProperty: 'true' });
     } catch (err) {
       expect(err).toEqual({
-        message: 'sampleProperty must be number',
-        name: 'IS_NUMBER',
+        message: 'sampleProperty must be boolean',
+        name: 'IS_BOOLEAN',
         path: 'sampleProperty',
       });
     }

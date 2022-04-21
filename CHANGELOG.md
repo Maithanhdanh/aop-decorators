@@ -1,3 +1,7 @@
+# [1.0.9]
+
+- Add validator
+
 # [1.0.7]
 
 - Export logger type `ILogger`

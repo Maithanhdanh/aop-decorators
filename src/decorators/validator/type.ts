@@ -29,6 +29,9 @@ enum NameValidator {
   IS_NUMBER = 'IS_NUMBER',
   MAX_DIGITS = 'MAX_DIGITS',
   MIN_DIGITS = 'MIN_DIGITS',
+
+  //Boolean
+  IS_BOOLEAN = 'IS_BOOLEAN',
 }
 
 interface ValidationError {
@@ -58,6 +61,9 @@ const messageMapper = {
   [NameValidator.IS_EMAIL]: 'must be email',
   [NameValidator.MAX_SIZE]: 'size must be less than',
   [NameValidator.MIN_SIZE]: 'size must be greater than',
+
+  //Boolean
+  [NameValidator.IS_BOOLEAN]: 'must be boolean',
 };
 
 interface Validator {

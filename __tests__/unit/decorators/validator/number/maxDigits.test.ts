@@ -3,7 +3,7 @@ import { MaxDigits, validateSchema } from '@server/decorators';
 describe('IsLess', () => {
   class SampleClass {
     @MaxDigits(3)
-    private sampleProperty: string;
+    private sampleProperty: number;
 
     public getData(): void {
       console.log(this.sampleProperty);

@@ -1,8 +1,9 @@
 {
   "name": "decorators-utils",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Using decorator to apply AOP (Aspect Oriented Programming)",
-  "main": "src/index.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "engines": {
     "node": ">=14 <15"
   },

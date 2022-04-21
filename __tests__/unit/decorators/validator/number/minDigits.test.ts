@@ -3,7 +3,7 @@ import { MinDigits, validateSchema } from '@server/decorators';
 describe('IsLess', () => {
   class SampleClass {
     @MinDigits(3)
-    private sampleProperty: string;
+    private sampleProperty: number;
 
     public getData(): void {
       console.log(this.sampleProperty);

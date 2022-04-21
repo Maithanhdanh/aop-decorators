@@ -94,4 +94,31 @@ describe('IsValidArray', () => {
       }
     });
   });
+
+  describe('child class is boolean', () => {
+    class SampleClass {
+      @IsValidArray(Boolean)
+      private sampleProperty: Boolean[];
+
+      public getData(): void {
+        console.log(this.sampleProperty);
+      }
+    }
+
+    it(`should not throw error when valid data`, () => {
+      validateSchema(SampleClass, { sampleProperty: [true] });
+    });
+
+    it(`should throw error when id is number`, () => {
+      try {
+        validateSchema(SampleClass, { sampleProperty: [123] });
+      } catch (err) {
+        expect(err).toEqual({
+          message: 'must be a valid array element',
+          name: 'IS_VALID_ARRAY',
+          path: 'sampleProperty[0]',
+        });
+      }
+    });
+  });
 });
