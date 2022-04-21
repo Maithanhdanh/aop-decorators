@@ -238,7 +238,7 @@ class SampleClass {
 ```
 
 Although `_params` is a required parameters, it still accept `undefined` value.
-It will throw `error` when `@required(error)`
+It will throw `error` when `@required(error)`, or even return `boolean` value (`true/false`) by `@required(false)`
 
 <a name="changeLog"></a>
 

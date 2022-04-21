@@ -1,3 +1,7 @@
+# [1.0.10]
+
+- Support `boolean` for decorator `IsRequired`
+
 # [1.0.9]
 
 - Add validator for `String`, `Number`, `Boolean`, `Object`, `Array`
