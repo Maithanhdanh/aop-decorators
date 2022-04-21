@@ -9,6 +9,9 @@ const validationMetadataKey = {
 };
 
 enum NameValidator {
+  //Custom test
+  CUSTOM_TEST = 'CUSTOM_TEST',
+
   //Array
   IS_VALID_ARRAY = 'IS_VALID_ARRAY',
 
@@ -35,12 +38,15 @@ enum NameValidator {
 }
 
 interface ValidationError {
-  name: NameValidator;
+  name: NameValidator | string;
   message: string;
   path: string;
 }
 
 const messageMapper = {
+  //Custom Test
+  [NameValidator.CUSTOM_TEST]: 'custom test failed',
+
   //Array
   [NameValidator.IS_VALID_ARRAY]: 'must be a valid array element',
 

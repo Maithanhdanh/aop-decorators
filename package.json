@@ -1,6 +1,6 @@
 {
   "name": "decorators-utils",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Using decorator to apply AOP (Aspect Oriented Programming)",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -18,7 +18,6 @@
   "author": "Dantis Mai <mtd.maithanhdanh@gmail.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "glob-parent": "5.1.2",
     "inversify": "^6.0.1",
     "module-alias": "^2.2.2",
     "tslib": "~2.3.0",

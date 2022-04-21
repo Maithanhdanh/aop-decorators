@@ -45,7 +45,7 @@ class SampleClass {
 
 ## Validator
 
-The module supports `string`, `number`, `boolean` ,`object`, `array`
+The module supports testing for `string`, `number`, `boolean` ,`object`, `array`, and `Test` to support custom Test
 
 ### String
 
@@ -187,6 +187,34 @@ validateSchema(SampleClass, { sampleProperty: [{ requestId:'string' }] });
   message: 'must be a valid array element',
   name: 'IS_VALID_ARRAY',
   path: 'sampleProperty[2]',
+};
+```
+
+### Custom Test
+
+```Typescript
+//Define class schema
+const canConvertStringToNum = (value: string): boolean => {
+    return !!parseInt(value);
+};
+
+class SampleClass {
+  @Test(canConvertStringToNum)
+  private sampleProperty: string;
+
+  public getData(): void {
+    console.log(this.sampleProperty);
+  }
+}
+
+//Run function to validate data based on the schema above
+validateSchema(SampleClass, { sampleProperty: '123' });
+
+//Sample returned error
+{
+  message: 'sampleProperty custom test failed',
+  name: 'canConvertStringToNum',
+  path: 'sampleProperty',
 };
 ```
 
