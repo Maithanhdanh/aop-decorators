@@ -7,7 +7,7 @@ abstract class BaseValidator implements Validator {
 
   abstract validateData(value: string | unknown, pattern?: RegExp): boolean;
 
-  private validationErrorBuilder(path: string, message?: string): ValidationError {
+  protected validationErrorBuilder(path: string, message?: string): ValidationError {
     return {
       name: this.name,
       message: !message ? `${path} ${this.errorMessage}` : `${path} ${message}`,

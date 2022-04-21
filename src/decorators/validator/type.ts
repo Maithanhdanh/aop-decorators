@@ -9,6 +9,12 @@ const validationMetadataKey = {
 };
 
 enum NameValidator {
+  //Array
+  IS_VALID_ARRAY = 'IS_VALID_ARRAY',
+
+  //Object
+  IS_VALID_OBJECT = 'IS_VALID_OBJECT',
+
   //String
   IS_STRING = 'IS_STRING',
   IS_REQUIRED = 'IS_REQUIRED',
@@ -32,6 +38,12 @@ interface ValidationError {
 }
 
 const messageMapper = {
+  //Array
+  [NameValidator.IS_VALID_ARRAY]: 'must be a valid array element',
+
+  //Object
+  [NameValidator.IS_VALID_OBJECT]: 'must be a valid object',
+
   //Number
   [NameValidator.IS_LARGER]: 'must be larger than',
   [NameValidator.IS_LESS]: 'must be less than',
