@@ -1,3 +1,7 @@
+# [1.0.11]
+
+- Add `Test` to support custom test
+
 # [1.0.10]
 
 - Support `boolean` for decorator `IsRequired`
