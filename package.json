@@ -1,6 +1,6 @@
 {
   "name": "decorators-utils",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Using decorator to apply AOP (Aspect Oriented Programming)",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -12,11 +12,13 @@
     "build": "rm -rf build && yarn install && tsc -p tsconfig.build.json && tscpaths -p tsconfig.build.json -s ./src -o ./build",
     "build:watch": "tsc -w -p tsconfig.build.json",
     "lint": "eslint . --ext .ts --quiet --fix ",
-    "test": "jest"
+    "test": "jest --forceExit --passWithNoTests",
+    "coverage": "jest --coverage --forceExit --passWithNoTests -c ./jest.config.ts"
   },
   "author": "Dantis Mai <mtd.maithanhdanh@gmail.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "glob-parent": "5.1.2",
     "inversify": "^6.0.1",
     "module-alias": "^2.2.2",
     "tslib": "~2.3.0",

@@ -1,5 +1,5 @@
-import { loggerConfig } from '@logger/logger.config';
-import { ILogger, LoggerConfig } from '@logger/type';
+import { loggerConfig } from './logger.config';
+import { ILogger, LoggerConfig } from './type';
 import { injectable } from 'inversify';
 import winston, { Logger } from 'winston';
 

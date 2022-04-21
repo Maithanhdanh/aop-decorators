@@ -1,3 +1,11 @@
+# [1.0.9]
+
+- Add validator for `String`, `Number`, `Boolean`, `Object`, `Array`
+
+# [1.0.8]
+
+- Update `README`
+
 # [1.0.7]
 
 - Export logger type `ILogger`
