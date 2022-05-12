@@ -1,3 +1,7 @@
+# [1.0.12]
+
+- Fix build module
+
 # [1.0.11]
 
 - Add `Test` to support custom test
