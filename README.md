@@ -49,16 +49,16 @@ The module supports testing for `string`, `number`, `boolean` ,`object`, `array`
 
 ### String
 
-Possible options for String: `isEmail`, `isMatched`, `isString`, `maxStringSize`, `minStringSize`
+Possible options for String: `IsEmail`, `IsMatched`, `IsString`, `MaxStringSize`, `MinStringSize`
 
 ```Typescript
 //Define class schema
 class SampleClass {
     @IsString()
-    @isMatched(/^dog/)
-    @isEmail()
-    @maxStringSize(5)
-    @minStringSize(1)
+    @IsMatched(/^dog/)
+    @IsEmail()
+    @MaxStringSize(5)
+    @MinStringSize(1)
     private sampleProperty: string;
 }
 
@@ -75,13 +75,13 @@ validateSchema(SampleClass, { sampleProperty: 'sample' });
 
 ### Number
 
-Possible options for String: `isLarger`, `isLess`, `isNumber`, `maxDigits`, `minDigits`
+Possible options for String: `IsLarger`, `IsLess`, `IsNumber`, `MaxDigits`, `MinDigits`
 
 ```Typescript
 //Define class schema
 class SampleClass {
-    @isLarger(2)
-    @isLess(5)
+    @IsLarger(2)
+    @IsLess(5)
     @IsNumber()
     @MaxDigits(3)
     @MinDigits(1)
@@ -101,7 +101,7 @@ validateSchema(SampleClass, { sampleProperty: 123 });
 
 ### Boolean
 
-Possible options for String: `isBoolean`
+Possible options for String: `IsBoolean`
 
 ```Typescript
 //Define class schema
@@ -123,7 +123,7 @@ validateSchema(SampleClass, { sampleProperty: true });
 
 ### Object
 
-Possible options for String: `isValidObject`
+Possible options for String: `IsValidObject`
 
 ```Typescript
 //Define class schema
@@ -133,7 +133,7 @@ class ChildClass {
 }
 
 class SampleClass {
-    @isValidObject()
+    @IsValidObject()
     private sampleProperty: ChildClass;
 }
 
@@ -150,7 +150,7 @@ validateSchema(SampleClass, { sampleProperty: { requestId:'string' } });
 
 ### Array
 
-Possible options for String: `isValidArray`
+Possible options for String: `IsValidArray`
 
 ```Typescript
 //Define class schema
@@ -160,22 +160,22 @@ class ChildClass {
 }
 
 class SampleClass {
-    @isValidArray(ChildClass)
+    @IsValidArray(ChildClass)
     private sampleProperty: ChildClass[];
 }
 
 class SampleClass {
-    @isValidArray(String)
+    @IsValidArray(String)
     private sampleProperty: String[];
 }
 
 class SampleClass {
-    @isValidArray(Number)
+    @IsValidArray(Number)
     private sampleProperty: Number[];
 }
 
 class SampleClass {
-    @isValidArray(Boolean)
+    @IsValidArray(Boolean)
     private sampleProperty: Boolean[];
 }
 
