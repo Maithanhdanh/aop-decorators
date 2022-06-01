@@ -1,3 +1,7 @@
+# [1.0.14]
+
+- Add feature `transform`, to make another process to input data
+
 # [1.0.13]
 
 - Fix `README`

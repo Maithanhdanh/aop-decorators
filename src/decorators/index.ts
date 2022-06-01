@@ -7,3 +7,4 @@ export * from './validator/common';
 export * from './validator/object';
 export * from './validator/array';
 export * from './validator/boolean';
+export * from './validator/transform';

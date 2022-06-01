@@ -1,7 +1,7 @@
 import BaseValidator from '../baseValidator';
 import { NameValidator } from '../error/validationError';
 import { messageMapper, ValidationError } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../utils/metadata';
+import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
 
 class TestValidator extends BaseValidator {
   protected name: NameValidator = NameValidator.CUSTOM_TEST;

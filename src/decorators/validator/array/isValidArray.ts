@@ -3,7 +3,7 @@ import { validateSchema } from '../common';
 import { validate } from '../method';
 import { required } from '../parameter';
 import { messageMapper, NameValidator, ValidationError, Validator } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../utils/metadata';
+import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
 
 const primitiveTypes = ['string', 'number', 'boolean'];
 

@@ -7,6 +7,7 @@ The module contain decorators that help us to apply Aspect Oriented Programming 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Validator](#validator)
+- [Transform](#transform)
 - [Log className and methodName when logging message](#logContext)
 - [Log input param value](#logInputParam)
 - [Validate required parameters](#validateRequiredParams)
@@ -216,6 +217,27 @@ validateSchema(SampleClass, { sampleProperty: '123' });
   name: 'canConvertStringToNum',
   path: 'sampleProperty',
 };
+```
+
+<a name="transform"></a>
+
+## Transform
+
+modify the input data
+
+```Typescript
+//Define class schema
+class SampleClass {
+    @Transform((x) => x.concat(' transformed'))
+    private sampleProperty: boolean;
+}
+
+//Run function to validate data based on the schema above
+const data = { sampleProperty: 'sampleData' }
+validateSchema(SampleClass, data);
+
+//New data
+console.log(data.sampleProperty) // => sampleData transformed
 ```
 
 <a name="logContext"></a>

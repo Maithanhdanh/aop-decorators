@@ -2,8 +2,8 @@ import BaseValidator from '../baseValidator';
 import { NameValidator } from '../error/validationError';
 import { required } from '../parameter';
 import { messageMapper, Validator } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../utils/metadata';
-import { validate } from '@decorators/validator/method';
+import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { validate } from '../method';
 
 class MaxStringSizeValidator extends BaseValidator implements Validator {
   protected name: NameValidator = NameValidator.MAX_SIZE;
