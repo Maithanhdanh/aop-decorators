@@ -1,5 +1,4 @@
-import { validateSchema } from '@server/decorators';
-import { Transform } from '@server/decorators/validator/transform/transform';
+import { Transform, validateSchema } from '@server/decorators';
 
 describe('Transform', () => {
   class SampleClass {
