@@ -3,7 +3,7 @@ import { NameValidator } from '../error/validationError';
 import { validate } from '../method';
 import { required } from '../parameter';
 import { messageMapper, Validator } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../utils/metadata';
+import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
 
 class MinStringSizeValidator extends BaseValidator implements Validator {
   protected name: NameValidator = NameValidator.MIN_SIZE;

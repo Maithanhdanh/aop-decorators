@@ -19,18 +19,6 @@ function validate(target: any, propertyName: string, descriptor: PropertyDescrip
         }
       }
     }
-    // requiredParams.map((paramIndex) => {
-    //   if (paramIndex >= args.length || !args[paramIndex]) {
-    //     if (expectedReturn && expectedReturn instanceof Error) {
-    //       throw expectedReturn;
-    //     }
-
-    //     if (expectedReturn && expectedReturn instanceof Boolean) {
-    //       return expectedReturn;
-    //     }
-    //   }
-    // });
-
     return originalMethod.apply(this, args);
   };
 }
