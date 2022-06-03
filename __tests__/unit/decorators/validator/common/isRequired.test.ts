@@ -2,7 +2,7 @@ import { IsRequired, validateSchema } from '@server/decorators';
 
 describe('IsRequired', () => {
   class SampleClass {
-    @IsRequired()
+    @IsRequired('missing field')
     private sampleProperty: string;
 
     public getData(): void {
@@ -14,11 +14,11 @@ describe('IsRequired', () => {
     validateSchema(SampleClass, { sampleProperty: 'string' });
   });
 
-  it(`should throw error when invalid data`, () => {
+  it(`should throw error with input message when invalid data`, () => {
     try {
       validateSchema(SampleClass, { property: 'string' });
     } catch (err) {
-      expect(err).toEqual({ message: 'sampleProperty must not be null', name: 'IS_REQUIRED', path: 'sampleProperty' });
+      expect(err).toEqual({ message: 'missing field', name: 'IS_REQUIRED', path: 'sampleProperty' });
     }
   });
 });

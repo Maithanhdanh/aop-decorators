@@ -4,7 +4,7 @@ describe('IsMatched', () => {
   const pattern = /^dog/;
 
   class SampleClass {
-    @IsMatched(pattern)
+    @IsMatched(pattern, 'need to start with dog')
     private sampleProperty: string;
 
     public getData(): void {
@@ -20,7 +20,7 @@ describe('IsMatched', () => {
       validateSchema(SampleClass, { sampleProperty: 'sadsada' });
     } catch (err) {
       expect(err).toEqual({
-        message: 'sampleProperty must match /^dog/',
+        message: 'need to start with dog',
         name: 'IS_MATCHED',
         path: 'sampleProperty',
       });

@@ -1,3 +1,7 @@
+# [1.1.0]
+
+- fix issue not throw input `errorMessage`
+
 # [1.0.14]
 
 - Add feature `transform`, to make another process to input data
