@@ -10,7 +10,7 @@ abstract class BaseValidator implements Validator {
   protected validationErrorBuilder(path: string, message?: string): ValidationError {
     return {
       name: this.name,
-      message: !message ? `${path} ${this.errorMessage}` : `${path} ${message}`,
+      message: !message ? `${path} ${this.errorMessage}` : `${message}`,
       path,
     };
   }
@@ -25,7 +25,7 @@ abstract class BaseValidator implements Validator {
     }
 
     if (typeof this.errorHandler === 'string') {
-      throw this.validationErrorBuilder(path);
+      throw this.validationErrorBuilder(path, this.errorHandler);
     }
 
     throw this.errorHandler;
