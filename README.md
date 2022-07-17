@@ -2,6 +2,24 @@
 
 The module contain decorators that help us to apply Aspect Oriented Programming (AOP) into NodeJs project. It uses [Winston](https://www.npmjs.com/package/winston) as based logger
 
+## Notes:
+
+- It will check all validator from top to bottom first, then run transform later
+
+```Typescript
+class SampleClass {
+    @IsString()
+    @MaxStringSize(5)
+    @Transform((x) => x.concat(' transformed'))
+    private sampleProperty: boolean;
+}
+
+// The flow will be:
+//  - Validate isString
+//  - Validate String length
+//  - Transform data
+```
+
 ## Table of Contents
 
 - [Installation](#installation)

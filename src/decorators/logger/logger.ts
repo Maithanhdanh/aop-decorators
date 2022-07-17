@@ -1,6 +1,6 @@
 function logContext() {
   return (target: any) => {
-    for (const propertyName of Object.getOwnPropertyNames(target.prototype)) {
+    Object.getOwnPropertyNames(target.prototype).forEach((propertyName) => {
       const descriptor = Object.getOwnPropertyDescriptor(target.prototype, propertyName);
       const originalMethod = descriptor.value;
 
@@ -10,7 +10,7 @@ function logContext() {
       };
 
       Object.defineProperty(target.prototype, propertyName, descriptor);
-    }
+    })
   };
 }
 
