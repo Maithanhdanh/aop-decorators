@@ -1,6 +1,8 @@
+import { ParamType } from './common/type';
 import { NameValidator, ValidationError, Validator } from './type';
 
 abstract class BaseValidator implements Validator {
+  private type = ParamType.VALIDATOR;
   protected name: NameValidator;
   protected errorMessage: string;
   protected errorHandler;
@@ -13,6 +15,10 @@ abstract class BaseValidator implements Validator {
       message: !message ? `${path} ${this.errorMessage}` : `${message}`,
       path,
     };
+  }
+
+  public get getType(): ParamType {
+    return this.type;
   }
 
   public get getName(): string {
@@ -35,7 +41,7 @@ abstract class BaseValidator implements Validator {
     this.errorHandler = errorHandler;
   }
 
-  public validate(value: unknown, path: string): void {
+  public process(value: unknown, path: string): void {
     if (!this.validateData(value)) {
       throw this.executeErrorHandler(path);
     }

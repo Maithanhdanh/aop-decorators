@@ -4,20 +4,20 @@ The module contain decorators that help us to apply Aspect Oriented Programming 
 
 ## Notes:
 
-- It will check all validator from top to bottom first, then run transform later
+- It will process from top to bottom.
 
 ```Typescript
 class SampleClass {
     @IsString()
-    @MaxStringSize(5)
     @Transform((x) => x.concat(' transformed'))
+    @MaxStringSize(5)
     private sampleProperty: boolean;
 }
 
 // The flow will be:
 //  - Validate isString
-//  - Validate String length
 //  - Transform data
+//  - Validate String length
 ```
 
 ## Table of Contents
@@ -26,12 +26,10 @@ class SampleClass {
 - [Usage](#usage)
 - [Validator](#validator)
 - [Transform](#transform)
-- [Log className and methodName when logging message](#logContext)
-- [Log input param value](#logInputParam)
-- [Validate required parameters](#validateRequiredParams)
-- [CHANGELOG](#changeLog)
-
-<a name="installation"></a>
+- [Log className and methodName when logging message](#logcontext)
+- [Log input param value](#loginputparam)
+- [Parameters](#parameters)
+- [CHANGELOG](#changelog)
 
 ## Installation
 
@@ -42,8 +40,6 @@ or
 
 yarn add decorators-utils
 ```
-
-<a name="usage"></a>
 
 ## Usage
 
@@ -59,8 +55,6 @@ class SampleClass {
   }
 }
 ```
-
-<a name="validator"></a>
 
 ## Validator
 
@@ -169,7 +163,7 @@ validateSchema(SampleClass, { sampleProperty: { requestId:'string' } });
 
 ### Array
 
-Possible options for String: `IsValidArray`
+Possible options for String: `IsValidArray`, `ArraySize`
 
 ```Typescript
 //Define class schema
@@ -209,6 +203,23 @@ validateSchema(SampleClass, { sampleProperty: [{ requestId:'string' }] });
 };
 ```
 
+```Typescript
+class SampleClass {
+    @ArraySize({ max: 2, min: 1 })
+    private sampleProperty: Boolean[];
+}
+
+//Run function to validate data based on the schema above
+validateSchema(SampleClass, { sampleProperty: [{ requestId:'string' }] });
+
+//Sample returned error
+{
+  message: 'sampleProperty size must be less than 2, greater than 1',
+  name: 'IS_VALID_ARRAY',
+  path: 'sampleProperty',
+};
+```
+
 ### Custom Test
 
 ```Typescript
@@ -237,8 +248,6 @@ validateSchema(SampleClass, { sampleProperty: '123' });
 };
 ```
 
-<a name="transform"></a>
-
 ## Transform
 
 modify the input data
@@ -258,9 +267,7 @@ validateSchema(SampleClass, data);
 console.log(data.sampleProperty) // => sampleData transformed
 ```
 
-<a name="logContext"></a>
-
-## Log className and methodName when logging message
+## LogContext
 
 ```Typescript
 @logContext()
@@ -275,9 +282,7 @@ class SampleClass {
 
 The message will be `[SampleClass] [sampleMethod] dummy message`
 
-<a name="logInputParam"></a>
-
-## Log input param value
+## LogInputParam
 
 ```Typescript
 class SampleClass {
@@ -292,9 +297,7 @@ class SampleClass {
 
 When the method is called, an additional log record will appear `method is called with param` with the input param value
 
-<a name="validateRequiredParams"></a>
-
-## Validate required parameters
+## Parameters
 
 ```Typescript
 class SampleClass {
@@ -307,8 +310,6 @@ class SampleClass {
 
 Although `_params` is a required parameters, it still accept `undefined` value.
 It will throw `error` when `@required(error)`, or even return `boolean` value (`true/false`) by `@required(false)`
-
-<a name="changeLog"></a>
 
 ## CHANGELOG
 

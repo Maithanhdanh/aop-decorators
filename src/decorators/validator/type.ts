@@ -1,3 +1,5 @@
+import { ParamType } from './common/type';
+
 const requiredMetadataKey = {
   REQUIRED: Symbol('required'),
   ERROR: Symbol('error'),
@@ -14,6 +16,7 @@ enum NameValidator {
 
   //Array
   IS_VALID_ARRAY = 'IS_VALID_ARRAY',
+  SIZE = 'SIZE',
 
   //Object
   IS_VALID_OBJECT = 'IS_VALID_OBJECT',
@@ -49,6 +52,7 @@ const messageMapper = {
 
   //Array
   [NameValidator.IS_VALID_ARRAY]: 'must be a valid array element',
+  [NameValidator.SIZE]: 'size must be',
 
   //Object
   [NameValidator.IS_VALID_OBJECT]: 'must be a valid object',
@@ -72,11 +76,22 @@ const messageMapper = {
   [NameValidator.IS_BOOLEAN]: 'must be boolean',
 };
 
-interface Validator {
-  getName: string;
-  validateData(value: unknown | string): boolean;
-  setErrorHandler: <T extends Error>(path: string, errorHandler?: T | string) => void;
-  validate(value: unknown, path: string): void;
+interface BaseValidatorDecorator {
+  getType: ParamType;
 }
 
-export { requiredMetadataKey, NameValidator, ValidationError, messageMapper, Validator, validationMetadataKey };
+interface Validator extends BaseValidatorDecorator {
+  validateData(value: unknown | string): boolean;
+  setErrorHandler: <T extends Error>(path: string, errorHandler?: T | string) => void;
+  process(value: unknown, path: string): void;
+}
+
+export {
+  requiredMetadataKey,
+  NameValidator,
+  ValidationError,
+  messageMapper,
+  Validator,
+  validationMetadataKey,
+  BaseValidatorDecorator,
+};

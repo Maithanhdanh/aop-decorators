@@ -1,3 +1,8 @@
+# [1.2.0]
+
+- Change validate flow (run from top to bottom)
+- Add `Size` validator
+
 # [1.1.0]
 
 - fix issue not throw input `errorMessage`
