@@ -13,7 +13,7 @@ const validationMetadataKey = {
 enum NameValidator {
   //Custom test
   CUSTOM_TEST = 'CUSTOM_TEST',
-  
+
   //Array
   IS_VALID_ARRAY = 'IS_VALID_ARRAY',
   SIZE = 'SIZE',
