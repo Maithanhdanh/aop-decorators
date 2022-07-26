@@ -1,5 +1,6 @@
-import { transformMetadataKey } from '../transform/type';
 import { validationMetadataKey, Validator } from '../type';
+import { ParamType } from './type';
+import { Transformer } from '../transform/type';
 
 const validateSchema = (target: any, inputData: any) => {
   const neededValidateParams: string[] = Reflect.getOwnMetadata(
@@ -9,21 +10,21 @@ const validateSchema = (target: any, inputData: any) => {
   );
 
   neededValidateParams?.forEach((param) => {
-    const validators: Validator[] = Reflect.getOwnMetadata(validationMetadataKey.VALIDATOR, target.prototype, param);
-    validators.forEach((validator) => validator.validate(inputData[param], param));
-  });
+    const validators: Validator[] | Transformer[] = Reflect.getOwnMetadata(
+      validationMetadataKey.VALIDATOR,
+      target.prototype,
+      param,
+    );
 
-  const neededTransformParams: string[] = Reflect.getOwnMetadata(
-    transformMetadataKey.TRANSFORM,
-    target.prototype,
-    transformMetadataKey.TRANSFORM,
-  );
+    validators?.forEach((validator: Validator | Transformer) => {
+      if (validator.getType === ParamType.VALIDATOR) {
+        (validator as Validator).process(inputData[param], param);
+      }
 
-  neededTransformParams?.forEach((param) => {
-    const transforms: any[] = Reflect.getOwnMetadata(transformMetadataKey.HANDLER, target.prototype, param);
-    transforms.forEach((handler) => {
-      const transformedData = handler(inputData[param]);
-      inputData[param] = transformedData;
+      if (validator.getType === ParamType.TRANSFORMER) {
+        const transformedData = (validator as Transformer).process(inputData[param]);
+        inputData[param] = transformedData;
+      }
     });
   });
 };

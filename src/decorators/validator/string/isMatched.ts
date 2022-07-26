@@ -1,7 +1,5 @@
 import BaseValidator from '../baseValidator';
 import { NameValidator } from '../error/validationError';
-import { validate } from '../method';
-import { required } from '../parameter';
 import { messageMapper } from '../type';
 import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
 
@@ -10,8 +8,7 @@ class MatchValidator extends BaseValidator {
   protected errorMessage: string = messageMapper[NameValidator.IS_MATCHED];
   private pattern: RegExp;
 
-  @validate
-  public validateData(@required(true) value: string): boolean {
+  public validateData(value: string): boolean {
     return this.pattern.test(value);
   }
 
