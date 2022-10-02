@@ -1,3 +1,7 @@
+# [1.2.1]
+
+- remove strict node engine
+
 # [1.2.0]
 
 - Change validate flow (run from top to bottom)

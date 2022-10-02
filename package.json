@@ -1,12 +1,10 @@
 {
   "name": "decorators-utils",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Using decorator to apply AOP (Aspect Oriented Programming)",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "engines": {
-    "node": ">=14 <15"
-  },
+
   "scripts": {
     "clean": "rm -rf coverage build tmp",
     "build": "rm -rf build && yarn install && tsc -p tsconfig.build.json && tscpaths -p tsconfig.build.json -s ./src -o ./build",
