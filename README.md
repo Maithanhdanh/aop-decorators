@@ -10,6 +10,7 @@ The module contain decorators that help us to apply Aspect Oriented Programming 
 class SampleClass {
     @IsString()
     @Transform((x) => x.concat(' transformed'))
+    @Mapping('renamedFieldName')
     @MaxStringSize(5)
     private sampleProperty: boolean;
 }
@@ -17,19 +18,30 @@ class SampleClass {
 // The flow will be:
 //  - Validate isString
 //  - Transform data
+//  - Mapping field name
 //  - Validate String length
 ```
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Validator](#validator)
-- [Transform](#transform)
-- [Log className and methodName when logging message](#logcontext)
-- [Log input param value](#loginputparam)
-- [Parameters](#parameters)
-- [CHANGELOG](#changelog)
+- [AOP Decorators](#aop-decorators)
+  - [Notes:](#notes)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Validator](#validator)
+    - [String](#string)
+    - [Number](#number)
+    - [Boolean](#boolean)
+    - [Object](#object)
+    - [Array](#array)
+    - [Custom Test](#custom-test)
+  - [Transform](#transform)
+  - [Mapping](#mapping)
+  - [LogContext](#logcontext)
+  - [LogInputParam](#loginputparam)
+  - [Parameters](#parameters)
+  - [CHANGELOG](#changelog)
 
 ## Installation
 
@@ -265,6 +277,25 @@ validateSchema(SampleClass, data);
 
 //New data
 console.log(data.sampleProperty) // => sampleData transformed
+```
+
+## Mapping
+
+Change field name
+
+```Typescript
+//Define class schema
+class SampleClass {
+    @Mapping('renamedFieldName')
+    private sampleProperty: boolean;
+}
+
+//Run function to validate data based on the schema above
+const data = { sampleProperty: 'sampleData' }
+validateSchema(SampleClass, data);
+
+//New data
+console.log(data.renamedFieldName) // => sampleData transformed
 ```
 
 ## LogContext

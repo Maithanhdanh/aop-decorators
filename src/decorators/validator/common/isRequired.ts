@@ -1,7 +1,7 @@
 import BaseValidator from '../baseValidator';
 import { NameValidator } from '../error/validationError';
 import { messageMapper } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { addNeededValidateParams, addHandlerForParams } from '../../utils/metadata';
 
 class RequireValidator extends BaseValidator {
   protected name: NameValidator = NameValidator.IS_REQUIRED;
@@ -19,7 +19,7 @@ function IsRequired<T extends Error>(errorHandler?: T | string) {
     const validator = new RequireValidator();
     validator.setErrorHandler(errorHandler);
 
-    addValidatorForParams(target, propertyKey, validator);
+    addHandlerForParams(target, propertyKey, validator);
   };
 }
 

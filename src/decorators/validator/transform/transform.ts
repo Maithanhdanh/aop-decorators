@@ -1,6 +1,6 @@
-import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { addNeededValidateParams, addHandlerForParams } from '../../utils/metadata';
 import { ParamType } from '../common/type';
-import { Transformer } from './type';
+import { Transformer } from '../type';
 
 class TransformData implements Transformer {
   private type = ParamType.TRANSFORMER;
@@ -23,7 +23,7 @@ function Transform(handler: (...args: any) => any) {
   return function (target: any, propertyKey: string): any {
     addNeededValidateParams(target, propertyKey);
 
-    addValidatorForParams(target, propertyKey, new TransformData(handler));
+    addHandlerForParams(target, propertyKey, new TransformData(handler));
   };
 }
 

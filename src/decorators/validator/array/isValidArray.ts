@@ -3,7 +3,7 @@ import { validateSchema } from '../common';
 import { validate } from '../method';
 import { required } from '../parameter';
 import { messageMapper, NameValidator, ValidationError, Validator } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { addNeededValidateParams, addHandlerForParams } from '../../utils/metadata';
 
 const primitiveTypes = ['string', 'number', 'boolean'];
 
@@ -64,7 +64,7 @@ function IsValidArray<T extends Error>(type: any, errorHandler?: T | string) {
     validator.setErrorHandler(errorHandler);
     validator.setTypeElement(type);
 
-    addValidatorForParams(target, propertyKey, validator);
+    addHandlerForParams(target, propertyKey, validator);
   };
 }
 

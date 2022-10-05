@@ -8,3 +8,4 @@ export * from './validator/object';
 export * from './validator/array';
 export * from './validator/boolean';
 export * from './validator/transform';
+export * from './validator/mapping';

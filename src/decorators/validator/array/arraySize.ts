@@ -2,7 +2,7 @@ import BaseValidator from '../baseValidator';
 import { NameValidator } from '../error/validationError';
 import { required } from '../parameter';
 import { messageMapper, Validator } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { addNeededValidateParams, addHandlerForParams } from '../../utils/metadata';
 import { validate } from '../method';
 
 interface SizeData {
@@ -64,7 +64,7 @@ function ArraySize<T extends Error>(size: SizeData, errorHandler?: T | string) {
     validator.setErrorHandler(errorHandler);
     validator.setSize(size);
 
-    addValidatorForParams(target, propertyKey, validator);
+    addHandlerForParams(target, propertyKey, validator);
   };
 }
 

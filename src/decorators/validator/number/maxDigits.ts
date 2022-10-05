@@ -3,7 +3,7 @@ import { NameValidator } from '../error/validationError';
 import { validate } from '../method';
 import { required } from '../parameter';
 import { messageMapper, Validator } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { addNeededValidateParams, addHandlerForParams } from '../../utils/metadata';
 
 class MaxDigitsValidator extends BaseValidator implements Validator {
   protected name: NameValidator = NameValidator.MAX_DIGITS;
@@ -29,7 +29,7 @@ function MaxDigits<T extends Error>(maxDigits: number, errorHandler?: T | string
     validator.setErrorHandler(errorHandler);
     validator.setMaxDigits(maxDigits);
 
-    addValidatorForParams(target, propertyKey, validator);
+    addHandlerForParams(target, propertyKey, validator);
   };
 }
 

@@ -3,7 +3,7 @@ import { NameValidator } from '../error/validationError';
 import { validate } from '../method';
 import { required } from '../parameter';
 import { messageMapper, Validator } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { addNeededValidateParams, addHandlerForParams } from '../../utils/metadata';
 
 class BooleanValidator extends BaseValidator implements Validator {
   protected name: NameValidator = NameValidator.IS_BOOLEAN;
@@ -22,7 +22,7 @@ function IsBoolean<T extends Error>(errorHandler?: T | string) {
     const validator = new BooleanValidator();
     validator.setErrorHandler(errorHandler);
 
-    addValidatorForParams(target, propertyKey, validator);
+    addHandlerForParams(target, propertyKey, validator);
   };
 }
 

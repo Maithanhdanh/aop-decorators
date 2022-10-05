@@ -3,7 +3,7 @@ import { NameValidator } from '../error/validationError';
 import { validate } from '../method';
 import { required } from '../parameter';
 import { messageMapper, Validator } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { addNeededValidateParams, addHandlerForParams } from '../../utils/metadata';
 
 class LargerValidator extends BaseValidator implements Validator {
   protected name: NameValidator = NameValidator.IS_LARGER;
@@ -29,7 +29,7 @@ function IsLarger<T extends Error>(upperBound: number, errorHandler?: T | string
     validator.setErrorHandler(errorHandler);
     validator.setLowerBound(upperBound);
 
-    addValidatorForParams(target, propertyKey, validator);
+    addHandlerForParams(target, propertyKey, validator);
   };
 }
 

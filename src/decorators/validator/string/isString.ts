@@ -3,7 +3,7 @@ import { NameValidator } from '../error/validationError';
 import { validate } from '../method';
 import { required } from '../parameter';
 import { messageMapper, Validator } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { addNeededValidateParams, addHandlerForParams } from '../../utils/metadata';
 
 class StringValidator extends BaseValidator implements Validator {
   protected name: NameValidator = NameValidator.IS_STRING;
@@ -22,7 +22,7 @@ function IsString<T extends Error>(errorHandler?: T | string) {
     const validator = new StringValidator();
     validator.setErrorHandler(errorHandler);
 
-    addValidatorForParams(target, propertyKey, validator);
+    addHandlerForParams(target, propertyKey, validator);
   };
 }
 
