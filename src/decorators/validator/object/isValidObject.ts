@@ -3,7 +3,7 @@ import { validateSchema } from '../common/validateSchema';
 import { validate } from '../method';
 import { required } from '../parameter';
 import { messageMapper, NameValidator, ValidationError, Validator } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { addNeededValidateParams, addHandlerForParams } from '../../utils/metadata';
 
 class ValidObjectValidator extends BaseValidator implements Validator {
   protected name: NameValidator = NameValidator.IS_VALID_OBJECT;
@@ -44,7 +44,7 @@ function IsValidObject<T extends Error>(errorHandler?: T | string) {
     validator.setErrorHandler(errorHandler);
     validator.setTemplate(propertyType);
 
-    addValidatorForParams(target, propertyKey, validator);
+    addHandlerForParams(target, propertyKey, validator);
   };
 }
 

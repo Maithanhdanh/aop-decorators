@@ -50,6 +50,21 @@ class LoggerImpl implements ILogger {
     return this.logger.error(this.buildMessage(message), ...args);
   }
 
+  public warn(message: string, ...args: any[]): Logger {
+    return this.logger.warn(this.buildMessage(message), ...args);
+  }
+
+  public http(message: string, ...args: any[]): Logger {
+    return this.logger.http(this.buildMessage(message), ...args);
+  }
+
+  public verbose(message: string, ...args: any[]): Logger {
+    return this.logger.verbose(this.buildMessage(message), ...args);
+  }
+  public silly(message: string, ...args: any[]): Logger {
+    return this.logger.silly(this.buildMessage(message), ...args);
+  }
+
   public setContext(className: string, methodName?: string): void {
     this.className = `[${className}] `;
     this.methodName = methodName ? `[${methodName}] ` : '';

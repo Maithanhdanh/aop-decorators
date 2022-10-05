@@ -2,7 +2,7 @@ import BaseValidator from '../baseValidator';
 import { NameValidator } from '../error/validationError';
 import { required } from '../parameter';
 import { messageMapper, Validator } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { addNeededValidateParams, addHandlerForParams } from '../../utils/metadata';
 import { validate } from '../method';
 
 class MaxStringSizeValidator extends BaseValidator implements Validator {
@@ -29,7 +29,7 @@ function MaxStringSize<T extends Error>(maxSize: number, errorHandler?: T | stri
     validator.setErrorHandler(errorHandler);
     validator.setMaxSize(maxSize);
 
-    addValidatorForParams(target, propertyKey, validator);
+    addHandlerForParams(target, propertyKey, validator);
   };
 }
 

@@ -1,7 +1,7 @@
 import BaseValidator from '../baseValidator';
 import { NameValidator } from '../error/validationError';
 import { messageMapper, ValidationError } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { addNeededValidateParams, addHandlerForParams } from '../../utils/metadata';
 
 class TestValidator extends BaseValidator {
   protected name: NameValidator = NameValidator.CUSTOM_TEST;
@@ -35,7 +35,7 @@ function Test<T extends Error>(customTest: (value: any) => boolean, errorHandler
     validator.setErrorHandler(errorHandler);
     validator.setCustomTest(customTest);
 
-    addValidatorForParams(target, propertyKey, validator);
+    addHandlerForParams(target, propertyKey, validator);
   };
 }
 

@@ -3,7 +3,7 @@ import { NameValidator } from '../error/validationError';
 import { validate } from '../method';
 import { required } from '../parameter';
 import { messageMapper, Validator } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { addNeededValidateParams, addHandlerForParams } from '../../utils/metadata';
 
 class MinDigitsValidator extends BaseValidator implements Validator {
   protected name: NameValidator = NameValidator.MIN_DIGITS;
@@ -29,7 +29,7 @@ function MinDigits<T extends Error>(minDigits: number, errorHandler?: T | string
     validator.setErrorHandler(errorHandler);
     validator.setMinDigits(minDigits);
 
-    addValidatorForParams(target, propertyKey, validator);
+    addHandlerForParams(target, propertyKey, validator);
   };
 }
 

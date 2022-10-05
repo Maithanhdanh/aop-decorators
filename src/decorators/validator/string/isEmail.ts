@@ -3,7 +3,7 @@ import { NameValidator } from '../error/validationError';
 import { validate } from '../method';
 import { required } from '../parameter';
 import { messageMapper } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { addNeededValidateParams, addHandlerForParams } from '../../utils/metadata';
 
 class EmailValidator extends BaseValidator {
   protected name: NameValidator = NameValidator.IS_EMAIL;
@@ -23,7 +23,7 @@ function IsEmail<T extends Error>(errorHandler?: T | string) {
     const validator = new EmailValidator();
     validator.setErrorHandler(errorHandler);
 
-    addValidatorForParams(target, propertyKey, validator);
+    addHandlerForParams(target, propertyKey, validator);
   };
 }
 

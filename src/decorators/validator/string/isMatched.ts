@@ -1,7 +1,7 @@
 import BaseValidator from '../baseValidator';
 import { NameValidator } from '../error/validationError';
 import { messageMapper } from '../type';
-import { addNeededValidateParams, addValidatorForParams } from '../../utils/metadata';
+import { addNeededValidateParams, addHandlerForParams } from '../../utils/metadata';
 
 class MatchValidator extends BaseValidator {
   protected name: NameValidator = NameValidator.IS_MATCHED;
@@ -26,7 +26,7 @@ function IsMatched<T extends Error>(pattern: RegExp, errorHandler?: T | string) 
     validator.setErrorHandler(errorHandler);
     validator.setPattern(pattern);
 
-    addValidatorForParams(target, propertyKey, validator);
+    addHandlerForParams(target, propertyKey, validator);
   };
 }
 

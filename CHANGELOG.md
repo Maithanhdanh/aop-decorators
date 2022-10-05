@@ -1,3 +1,14 @@
+# [1.2.2]
+
+- Add `Mapping` decorator to change field name
+- Fix process decorators
+- Add integration tests
+- Add more methods for logger
+
+# [1.2.1]
+
+- remove strict node engine
+
 # [1.2.0]
 
 - Change validate flow (run from top to bottom)

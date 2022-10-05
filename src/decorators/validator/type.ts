@@ -86,6 +86,14 @@ interface Validator extends BaseValidatorDecorator {
   process(value: unknown, path: string): void;
 }
 
+interface Transformer extends BaseValidatorDecorator {
+  process(value: unknown): void;
+}
+
+interface Mappinger extends BaseValidatorDecorator {
+  process(data: unknown, fieldName: string): void;
+}
+
 export {
   requiredMetadataKey,
   NameValidator,
@@ -94,4 +102,6 @@ export {
   Validator,
   validationMetadataKey,
   BaseValidatorDecorator,
+  Transformer,
+  Mappinger,
 };
