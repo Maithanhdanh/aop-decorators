@@ -1,4 +1,12 @@
-# [1.2.2]
+# [1.2.3]
+
+- Add `Mapping` decorator to change field name
+- Fix process decorators
+- Add integration tests
+- Add more methods for logger
+- Fix build package
+
+# [1.2.2] - DELICATED
 
 - Add `Mapping` decorator to change field name
 - Fix process decorators
