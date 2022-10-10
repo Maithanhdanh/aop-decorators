@@ -25,7 +25,11 @@ class ValidObjectValidator extends BaseValidator implements Validator {
       validateSchema(this.template, value);
       return true;
     } catch (err) {
-      this.invalidFieldError = err;
+      if (err instanceof Error) {
+        this.setErrorHandler(err);
+      } else {
+        this.invalidFieldError = err;
+      }
       return false;
     }
   }

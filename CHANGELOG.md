@@ -1,5 +1,9 @@
 # [1.2.3]
 
+- Fix object should throw error from a field inside object
+
+# [1.2.3]
+
 - Add `Mapping` decorator to change field name
 - Fix process decorators
 - Add integration tests
