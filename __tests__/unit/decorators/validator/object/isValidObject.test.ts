@@ -1,11 +1,12 @@
 import { IsRequired, IsString, IsValidObject, validateSchema } from '@server/decorators';
 
 describe('IsValidObject', () => {
+  const sampleError = new Error('error from childClass');
   class ChildClass {
     @IsString()
     private id: string;
 
-    @IsRequired()
+    @IsRequired(sampleError)
     private date: string;
 
     public getData(): void {
@@ -21,7 +22,7 @@ describe('IsValidObject', () => {
       console.log(this.sampleProperty);
     }
   }
-  
+
   it(`should not throw error when valid data`, () => {
     validateSchema(SampleClass, { sampleProperty: { id: 'string', date: 'string' } });
   });
@@ -46,11 +47,7 @@ describe('IsValidObject', () => {
     try {
       validateSchema(SampleClass, { sampleProperty: { id: '123' } });
     } catch (err) {
-      expect(err).toEqual({
-        message: 'date must not be null',
-        name: 'IS_VALID_OBJECT',
-        path: 'sampleProperty.date',
-      });
+      expect(err).toEqual(sampleError);
     }
   });
 });
