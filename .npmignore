@@ -1,0 +1,17 @@
+src
+.github
+.husky
+__tests__
+coverage
+.editorconfig
+.eslintignore
+.eslintrc
+.gitattributes
+.gitignore
+.prettierignore
+.prettierrc
+jest.config.ts
+SECURITY.md
+yarn.lock
+tsconfig.*
+test-report.html 

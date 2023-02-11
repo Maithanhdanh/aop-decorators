@@ -1,4 +1,8 @@
-# [1.2.3]
+# [1.2.5]
+
+- ignore `src` in built module to reduce module size
+
+# [1.2.4]
 
 - Fix object should throw error from a field inside object
 
