@@ -7,7 +7,7 @@ const { createLogger, transports, format } = winston;
 const { timestamp, json, errors, combine } = format;
 
 const metadataFormat = ({ serviceInfo }: LoggerConfig) =>
-  format((info) => {
+  format((info: any) => {
     if (serviceInfo) {
       info.serviceName = serviceInfo.serviceName;
       info.serviceId = serviceInfo?.serviceId;
