@@ -10,8 +10,8 @@ const metadataFormat = ({ serviceInfo }: LoggerConfig) =>
   format((info) => {
     if (serviceInfo) {
       info.serviceName = serviceInfo.serviceName;
-      info.serviceId = serviceInfo.serviceId;
-      info.serviceVersion = serviceInfo.serviceVersion;
+      info.serviceId = serviceInfo?.serviceId;
+      info.serviceVersion = serviceInfo?.serviceVersion;
     }
 
     return info;

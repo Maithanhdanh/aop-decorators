@@ -10,6 +10,7 @@
     "jsx": "react",
     "alwaysStrict": true,
     "sourceMap": true,
+    "noImplicitAnyForClassMembers": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
